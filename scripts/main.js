@@ -1,12 +1,14 @@
 import { DailyJournal } from "./DailyJournal.js";
-import { getEntries } from "./database.js";
+import { getEntries, fetchMoods } from "./database.js";
 
 const container = document.querySelector("#entries");
 
 document.addEventListener("stateChanged", () => render());
 
 const render = () => {
-    getEntries().then(() => (container.innerHTML = DailyJournal()));
+    getEntries()
+        .then(() => fetchMoods())
+        .then(() => (container.innerHTML = DailyJournal()));
 };
 
 render();

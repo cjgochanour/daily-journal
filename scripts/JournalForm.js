@@ -1,17 +1,19 @@
-import { saveJournalEntry } from "./database.js";
+import { saveJournalEntry, getMoods, fetchMoods } from "./database.js";
 
 document.addEventListener("click", (event) => {
     if (event.target.id === "btn") {
         const dateStr = document.querySelector("input[name='entryDate']").value;
         const concept = document.querySelector("input[name='entryConcept']").value;
         const entry = document.querySelector("textarea[name='entryText']").value;
-        const mood = document.querySelector("select[name='entryMood']").value;
-        saveJournalEntry({ date: dateStr, concept, entry, mood });
+        const moodId = document.querySelector("select[name='entryMood']").selectedIndex + 1;
+        saveJournalEntry({ date: dateStr, concept, entry, moodId });
     }
 });
 
-export const JournalForm = () =>
-    `<form class="entryForm">
+export const JournalForm = () => {
+    const moods = getMoods();
+    const moodMap = moods.map((mood) => `<option>${mood.label}</option>`);
+    return `<form class="entryForm">
     <fieldset>
         <div class="dateBox">
             <label for="entryDate">Date</label>
@@ -28,10 +30,10 @@ export const JournalForm = () =>
         <div class="moodBox">
             <label for="entryMood">Mood for the day</label>
             <select name="entryMood" class="entryForm__mood">
-                <option>Glad</option>
-                <option>Sad</option>
+                ${moodMap}
             </select>
             </div>
             <button type='button' id="btn">Record Journal Entry</button>
         </fieldset>
         </form>`;
+};
