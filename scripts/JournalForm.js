@@ -1,3 +1,15 @@
+import { saveJournalEntry } from "./database.js";
+
+document.addEventListener("click", (event) => {
+    if (event.target.id === "btn") {
+        const dateStr = document.querySelector("input[name='entryDate']").value;
+        const concept = document.querySelector("input[name='entryConcept']").value;
+        const entry = document.querySelector("textarea[name='entryText']").value;
+        const mood = document.querySelector("select[name='entryMood']").value;
+        saveJournalEntry({ date: dateStr, concept, entry, mood });
+    }
+});
+
 export const JournalForm = () =>
     `<form class="entryForm">
     <fieldset>
@@ -19,7 +31,7 @@ export const JournalForm = () =>
                 <option>Glad</option>
                 <option>Sad</option>
             </select>
-        </div>
-        <button>Record Journal Entry</button>
-    </fieldset>
-</form>`;
+            </div>
+            <button type='button' id="btn">Record Journal Entry</button>
+        </fieldset>
+        </form>`;

@@ -3,6 +3,8 @@ import { getEntries } from "./database.js";
 
 const container = document.querySelector("#entries");
 
+document.addEventListener("stateChanged", () => render());
+
 const render = () => {
     getEntries().then(() => (container.innerHTML = DailyJournal()));
 };

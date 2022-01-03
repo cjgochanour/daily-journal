@@ -10,4 +10,14 @@ export const getEntries = () => {
         });
 };
 
+export const saveJournalEntry = (entry) => {
+    return fetch(`${API}/entries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(entry),
+    })
+        .then(() => getEntries())
+        .then(() => document.dispatchEvent(new CustomEvent("stateChanged")));
+};
+
 export const getJournalEntries = () => localEntries.map((entry) => ({ ...entry }));
