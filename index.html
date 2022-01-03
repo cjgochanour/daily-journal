@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/main.css" />
+        <title>Daily Journal</title>
+    </head>
+    <body>
+        <header>
+            <img id="logo" src="/img/logo.png" alt="logo" height="50px" width="75px" />
+            <div class="welcome">Cory's Journal</div>
+        </header>
+        <main id="container">
+            <h2>Daily Journal</h2>
+            <form class="entryForm">
+                <fieldset>
+                    <div class="dateBox">
+                        <label for="entryDate">Date</label>
+                        <input type="date" name="entryDate" class="entryForm__date" />
+                    </div>
+                    <div class="conceptBox">
+                        <label for="entryConcept">Concepts Covered</label>
+                        <input type="text" name="entryConcept" class="entryForm__concept" />
+                    </div>
+                    <div class="entryBox">
+                        <label for="entryText">Journal Entry</label>
+                        <textarea name="entryText" class="entryForm__text"></textarea>
+                    </div>
+                    <div class="moodBox">
+                        <label for="entryMood">Mood for the day</label>
+                        <select name="entryMood" class="entryForm__mood">
+                            <option>Glad</option>
+                            <option>Sad</option>
+                        </select>
+                    </div>
+                    <button>Record Journal Entry</button>
+                </fieldset>
+            </form>
+            <article id="entries"></article>
+        </main>
+        <footer>
+            <p>Copyright &copy; 2022 Cory Gochanour</p>
+            <a href="https://github.com/cjgochanour"
+                ><img src="img/gh.png" alt="github link" width="25px" height="25px"
+            /></a>
+        </footer>
+    </body>
+</html>
