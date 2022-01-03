@@ -5,9 +5,9 @@ export const DailyJournal = () => {
     return `
     <h1>Daily Journal</h1>
 
-    <div class="entryList">
+    <article class="entryList">
         ${Entries()}
-    </div>
+    </article>
 
     <article class="entryForm">
         ${JournalForm()}

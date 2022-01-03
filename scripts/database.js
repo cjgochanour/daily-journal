@@ -27,5 +27,11 @@ export const saveJournalEntry = (entry) => {
         .then(() => document.dispatchEvent(new CustomEvent("stateChanged")));
 };
 
+export const deleteEntry = (entryId) => {
+    return fetch(`${API}/entries/${entryId}`, { method: "DELETE" }).then(() =>
+        document.dispatchEvent(new CustomEvent("stateChanged"))
+    );
+};
+
 export const getMoods = () => localMoods.map((mood) => ({ ...mood }));
 export const getJournalEntries = () => localEntries.map((entry) => ({ ...entry }));
