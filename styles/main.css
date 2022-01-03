@@ -3,6 +3,14 @@ form {
     flex-wrap: wrap;
     flex-direction: column;
 }
+header,
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .dateBox {
     border: 1px solid black;
 }
