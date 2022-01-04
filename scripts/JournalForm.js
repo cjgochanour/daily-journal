@@ -1,4 +1,4 @@
-import { saveJournalEntry, getMoods, fetchMoods } from "./database.js";
+import { saveJournalEntry, getMoods } from "./database.js";
 
 document.addEventListener("click", (event) => {
     if (event.target.id === "btn") {

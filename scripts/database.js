@@ -1,13 +1,15 @@
 const API = "http://localhost:8088";
 
-let localEntries = [];
+let allLocalEntries = [];
 let localMoods = [];
+let displayedEntries = 0;
+let isStateChanged = false;
 
 export const getEntries = () => {
     return fetch(`${API}/entries?_expand=mood`)
         .then((res) => res.json())
         .then((entries) => {
-            localEntries = entries;
+            allLocalEntries = entries;
         });
 };
 
@@ -33,5 +35,11 @@ export const deleteEntry = (entryId) => {
     );
 };
 
+export const toBeDisplayed = (array) => {
+    displayedEntries = array;
+    isStateChanged = true;
+};
+
 export const getMoods = () => localMoods.map((mood) => ({ ...mood }));
-export const getJournalEntries = () => localEntries.map((entry) => ({ ...entry }));
+export const getJournalEntries = () => allLocalEntries.map((entry) => ({ ...entry }));
+export const getDisplayEntries = () => displayedEntries;

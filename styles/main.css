@@ -19,6 +19,7 @@ footer {
     border: 1px solid black;
     align-items: center;
     width: auto;
+    margin: 1em;
 }
 
 .delBtn {

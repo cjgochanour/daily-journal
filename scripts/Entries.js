@@ -1,4 +1,4 @@
-import { deleteEntry, getJournalEntries } from "./database.js";
+import { deleteEntry, getDisplayEntries, getJournalEntries } from "./database.js";
 
 document.addEventListener("click", (event) => {
     if (event.target.name === "del") {
@@ -8,7 +8,11 @@ document.addEventListener("click", (event) => {
 });
 
 export const Entries = () => {
-    const entries = getJournalEntries();
+    let entries = getJournalEntries();
+    let displayedEntries = getDisplayEntries();
+    if (displayedEntries && displayedEntries > 0) {
+        entries = entries.filter((entry) => entry.mood.id === displayedEntries);
+    }
     let html = "";
 
     for (const entry of entries) {
